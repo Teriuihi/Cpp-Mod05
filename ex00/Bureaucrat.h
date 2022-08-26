@@ -23,7 +23,7 @@ public:
 		Bureaucrat &b;
 		uint8_t level;
 		GradeTooHighException(Bureaucrat &, uint8_t);
-		const char *what() const _NOEXCEPT;
+        virtual const char *what() const throw();
 	};
 	class GradeTooLowException : public std::exception
 	{
@@ -31,7 +31,7 @@ public:
 		Bureaucrat &b;
 		uint8_t level;
 		GradeTooLowException(Bureaucrat &, uint8_t);
-		const char *what() const _NOEXCEPT;
+		virtual const char *what() const throw();
 	};
 
 	void increment();

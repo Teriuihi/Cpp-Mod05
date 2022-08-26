@@ -51,7 +51,6 @@ void Bureaucrat::decrement() {
 	grade++;
 }
 
-
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
 	return "Grade too high";
 }
