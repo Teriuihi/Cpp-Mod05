@@ -11,7 +11,8 @@ public:
 	Bureaucrat();
 	Bureaucrat(const std::string& name, uint8_t grade);
 	Bureaucrat(Bureaucrat const &);
-	~Bureaucrat();
+    Bureaucrat& operator=(Bureaucrat const &);
+    ~Bureaucrat();
 
 	const std::string &getName() const;
 
