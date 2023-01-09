@@ -39,5 +39,14 @@ int main() {
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
+	try {
+		Bureaucrat b1 = Bureaucrat("b100", 100);
+		PresidentialPardonForm f1 = PresidentialPardonForm("three");
+		b1.signForm(f1);
+		b1.executeForm(f1);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 	return 0;
 }

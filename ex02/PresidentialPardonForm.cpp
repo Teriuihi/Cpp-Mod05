@@ -1,12 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm():
-		AForm("PresidentialPardonForm", 145, 137), _target("Default") {
+		AForm("PresidentialPardonForm", 25, 5), _target("Default") {
 	std::cout << "PresidentialPardonForm created with default constructor." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target):
-		AForm("PresidentialPardonForm", 145, 137), _target(target) {
+		AForm("PresidentialPardonForm", 25, 5), _target(target) {
 	std::cout <<
 		"PresidentialPardonForm created with normal constructor with data:\n" <<
 		"\ttarget: [" << _target << "]\n" <<
@@ -14,7 +14,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target):
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &f):
-		AForm("PresidentialPardonForm", 145, 137), _target(f._target) {
+		AForm("PresidentialPardonForm", 25, 5), _target(f._target) {
 	std::cout <<
 		"PresidentialPardonForm created with assignment constructor with data:\n" <<
 		"\ttarget: [" << _target << "]\n" <<

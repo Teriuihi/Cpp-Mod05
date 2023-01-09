@@ -1,12 +1,12 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm():
-		AForm("RobotomyRequestForm", 145, 137), _target("Default") {
+		AForm("RobotomyRequestForm", 72, 45), _target("Default") {
 	std::cout << "RobotomyRequestForm created with default constructor." << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target):
-		AForm("RobotomyRequestForm", 145, 137), _target(target) {
+		AForm("RobotomyRequestForm", 72, 45), _target(target) {
 	std::cout <<
 		"RobotomyRequestForm created with normal constructor with data:\n" <<
 		"\ttarget: [" << _target << "]\n" <<
@@ -14,7 +14,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target):
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &f):
-		AForm("RobotomyRequestForm", 145, 137), _target(f._target) {
+		AForm("RobotomyRequestForm", 72, 45), _target(f._target) {
 	std::cout <<
 		"RobotomyRequestForm created with assignment constructor with data:\n" <<
 		"\ttarget: [" << _target << "]\n" <<
