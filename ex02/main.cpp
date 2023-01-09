@@ -32,8 +32,17 @@ int main() {
 	}
 
 	try {
-		Bureaucrat b1 = Bureaucrat("b30", 30);
+		Bureaucrat b1 = Bureaucrat("b30", 1);
 		PresidentialPardonForm f1 = PresidentialPardonForm("three");
+		b1.signForm(f1);
+		b1.executeForm(f1);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	try {
+		Bureaucrat b1 = Bureaucrat("b20", 20);
+		PresidentialPardonForm f1 = PresidentialPardonForm("four");
 		b1.signForm(f1);
 		b1.executeForm(f1);
 	} catch (std::exception &e) {
