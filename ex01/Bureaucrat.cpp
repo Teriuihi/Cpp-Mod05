@@ -1,5 +1,4 @@
-#include <iostream>
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150) {
 	std::cout << "Bureaucrat created with default constructor." << std::endl;
@@ -65,6 +64,16 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(Bureaucrat &b, uint8_t le
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade too low";
+}
+
+void Bureaucrat::signForm(Form &form) {
+	try {
+		form.beSigned(this);
+	} catch (Form::GradeTooLowException &e) {
+		std::cout << name << " couldn't sign form [" << form.getName() << "] because " << name << "'s grade is too low.";
+		return;
+	}
+	std::cout << name << " signed form [" << form.getName() << "]";
 }
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &dt) {

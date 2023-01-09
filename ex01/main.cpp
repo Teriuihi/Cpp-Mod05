@@ -1,4 +1,4 @@
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 void printGrade(Bureaucrat &bureaucrat) {
@@ -10,38 +10,12 @@ void printGrade(Bureaucrat &bureaucrat) {
 }
 
 int main() {
-	try { Bureaucrat("test1", 0); }
-	catch (std::exception &e) { std::cout << e.what() << std::endl; }
-
-	try { Bureaucrat("test2", 151); }
-	catch (std::exception &e) { std::cout << e.what() << std::endl; }
-
 	try {
-		Bureaucrat a = Bureaucrat("test3", 150);
-		a.increment();
-		a.decrement();
-		printGrade(a);
+		Bureaucrat b1 = Bureaucrat("test b 1", 30);
+		Form f1 = Form("test form 1", 30, 30);
+		b1.signForm(f1);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-
-	try {
-		Bureaucrat a = Bureaucrat("test4", 149);
-		Bureaucrat b = Bureaucrat("test5", 1);
-		a.increment();
-		a.decrement();
-		b.decrement();
-		printGrade(a);
-		printGrade(b);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	try {
-		Bureaucrat a = Bureaucrat("test6", 1);
-		a.decrement();
-		printGrade(a);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+	return 0;
 }
