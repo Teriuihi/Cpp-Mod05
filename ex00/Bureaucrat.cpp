@@ -1,4 +1,4 @@
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150) {
 	std::cout << "Bureaucrat created with default constructor." << std::endl;

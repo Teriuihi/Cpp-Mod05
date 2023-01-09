@@ -1,4 +1,4 @@
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 void printGrade(Bureaucrat &bureaucrat) {
