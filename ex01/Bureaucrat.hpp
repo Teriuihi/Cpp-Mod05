@@ -1,9 +1,10 @@
-#ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 #include <string>
 #include <ostream>
 #include <iostream>
 #include "Form.hpp"
+class Form;
 
 class Bureaucrat {
 private:

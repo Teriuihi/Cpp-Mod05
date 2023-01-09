@@ -19,7 +19,7 @@ Form::Form(const std::string &name, const int signGrade, const int execGrade)
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
-		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]\n" <<
+		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]" <<
 		std::endl;
 }
 
@@ -30,7 +30,7 @@ Form::Form(const Form &f) : _name(f.getName()), _signed(f.isSigned()), _signGrad
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
-		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]\n" <<
+		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]" <<
 		std::endl;
 }
 
@@ -41,7 +41,7 @@ Form &Form::operator=(const Form &f) {
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
-		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]\n" <<
+		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]" <<
 		std::endl;
 	return *this;
 }
@@ -51,7 +51,7 @@ Form::~Form() {
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
-		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]\n" <<
+		"\trequired execute grade: [" << static_cast<int16_t>(_execGrade) << "]" <<
 		std::endl;
 }
 
