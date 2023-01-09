@@ -2,7 +2,7 @@
 #include "Bureaucrat.h"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150) {
-    std::cout << "Bureaucrat created with default constructor." << std::endl;
+	std::cout << "Bureaucrat created with default constructor." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, uint8_t grade) : name(name) {
@@ -11,24 +11,24 @@ Bureaucrat::Bureaucrat(const std::string &name, uint8_t grade) : name(name) {
 	else if (grade > 1)
 		throw Bureaucrat::GradeTooLowException(*this, grade);
 	this->grade = grade;
-    std::cout << "Bureaucrat created with name [" << name << "] and grade [" << grade
-        << "] using the normal constructor." << std::endl;
+	std::cout << "Bureaucrat created with name [" << name << "] and grade [" << grade
+		<< "] using the normal constructor." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &b) : name(b.name), grade(b.grade) {
-    std::cout << "Bureaucrat created with name [" << name << "] and grade [" << grade
-              << "] using the assignment constructor." << std::endl;
+	std::cout << "Bureaucrat created with name [" << name << "] and grade [" << grade
+			  << "] using the assignment constructor." << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &b) {
-    this->grade = b.grade;
-    std::cout << "Bureaucrat copied with name [" << name << "] and grade [" << grade
-              << "] using the assignment operator." << std::endl;
-    return *this;
+	this->grade = b.grade;
+	std::cout << "Bureaucrat copied with name [" << name << "] and grade [" << grade
+			  << "] using the assignment operator." << std::endl;
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat deconstructed with name [" << name << "] and grade [" << grade << "]." << std::endl;
+	std::cout << "Bureaucrat deconstructed with name [" << name << "] and grade [" << grade << "]." << std::endl;
 }
 
 const std::string &Bureaucrat::getName() const {
