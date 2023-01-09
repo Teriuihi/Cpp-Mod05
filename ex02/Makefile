@@ -3,8 +3,8 @@ CC=c++
 FLAGS=-Wall -Wextra -Werror -std=c++98
 RM=rm -f
 
-FILES=main.cpp Bureaucrat.cpp AForm.cpp
-HEADERS=Bureaucrat.hpp AForm.hpp
+FILES=main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+HEADERS=Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp
 
 OBJ=$(FILES:%.cpp=%.o)
 

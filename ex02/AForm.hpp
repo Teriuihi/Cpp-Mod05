@@ -6,40 +6,53 @@
 #include "Bureaucrat.hpp"
 class Bureaucrat;
 
-class Form {
+class AForm {
 private:
 	const std::string _name;
 	bool _signed;
 	const int _signGrade;
 	const int _execGrade;
+protected:
+	AForm();
+	AForm(const std::string &name, int signGrade, int execGrade);
+	AForm(AForm const &);
+	AForm& operator=(AForm const &);
+	~AForm();
+	virtual void finalExecute() = 0;
 public:
-	Form();
-	Form(const std::string &name, int signGrade, int execGrade);
-	Form(Form const &);
-	Form& operator=(Form const &);
-	~Form();
 	const std::string &getName() const;
 	bool isSigned() const;
 	int getSignGrade() const;
 	int getExecGrade() const;
 	void beSigned(Bureaucrat &bureaucrat);
+	void execute(Bureaucrat &bureaucrat);
+
 
 	class GradeTooHighException : public std::exception {
 	public:
-		Form &form;
+		AForm &form;
 		uint8_t level;
-		GradeTooHighException(Form &, uint8_t);
+		GradeTooHighException(AForm &, uint8_t);
 		virtual const char *what() const throw();
 	};
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		Form &form;
+		AForm &form;
 		uint8_t level;
-		GradeTooLowException(Form &, uint8_t);
+		GradeTooLowException(AForm &, uint8_t);
+		virtual const char *what() const throw();
+	};
+
+	class UnsignedException : public std::exception
+	{
+	public:
+		AForm &form;
+		Bureaucrat &bureaucrat;
+		UnsignedException(AForm &, Bureaucrat &);
 		virtual const char *what() const throw();
 	};
 };
-std::ostream& operator<<(std::ostream& o, Form const& dt);
+std::ostream& operator<<(std::ostream& o, AForm const& dt);
 
 #endif

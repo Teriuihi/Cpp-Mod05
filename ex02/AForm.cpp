@@ -1,21 +1,21 @@
 #include "AForm.hpp"
 
-Form::Form(): _name("Default"), _signed(false), _signGrade(1), _execGrade(1) {
-	std::cout << "Form created with default constructor." << std::endl;
+AForm::AForm(): _name("Default"), _signed(false), _signGrade(1), _execGrade(1) {
+	std::cout << "AForm created with default constructor." << std::endl;
 }
 
-Form::Form(const std::string &name, const int signGrade, const int execGrade)
+AForm::AForm(const std::string &name, const int signGrade, const int execGrade)
 			: _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
 	if (signGrade < 1)
-		throw Form::GradeTooHighException(*this, signGrade);
+		throw AForm::GradeTooHighException(*this, signGrade);
 	else if (signGrade > 150)
-		throw Form::GradeTooLowException(*this, signGrade);
+		throw AForm::GradeTooLowException(*this, signGrade);
 	if (execGrade < 1)
-		throw Form::GradeTooHighException(*this, execGrade);
+		throw AForm::GradeTooHighException(*this, execGrade);
 	else if (execGrade > 150)
-		throw Form::GradeTooLowException(*this, execGrade);
+		throw AForm::GradeTooLowException(*this, execGrade);
 	std::cout <<
-		"Form created with normal constructor with data:\n" <<
+		"AForm created with normal constructor with data:\n" <<
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
@@ -23,10 +23,10 @@ Form::Form(const std::string &name, const int signGrade, const int execGrade)
 		std::endl;
 }
 
-Form::Form(const Form &f) : _name(f.getName()), _signed(f.isSigned()), _signGrade(f.getSignGrade()), _execGrade(
+AForm::AForm(const AForm &f) : _name(f.getName()), _signed(f.isSigned()), _signGrade(f.getSignGrade()), _execGrade(
 		f.getExecGrade()) {
 	std::cout <<
-		"Form created with assignment constructor with data:\n" <<
+		"AForm created with assignment constructor with data:\n" <<
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
@@ -34,10 +34,10 @@ Form::Form(const Form &f) : _name(f.getName()), _signed(f.isSigned()), _signGrad
 		std::endl;
 }
 
-Form &Form::operator=(const Form &f) {
+AForm &AForm::operator=(const AForm &f) {
 	_signed = f.isSigned();
 	std::cout <<
-		"Form copied with copy operator with data:\n" <<
+		"AForm copied with copy operator with data:\n" <<
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
@@ -46,8 +46,8 @@ Form &Form::operator=(const Form &f) {
 	return *this;
 }
 
-Form::~Form() {
-	std::cout << "Form deconstructed with data:\n" <<
+AForm::~AForm() {
+	std::cout << "AForm deconstructed with data:\n" <<
 		"\tname: [" << _name << "]\n" <<
 		"\tsigned: [" << _signed << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(_signGrade) << "]\n" <<
@@ -55,51 +55,70 @@ Form::~Form() {
 		std::endl;
 }
 
-const std::string &Form::getName() const {
+const std::string &AForm::getName() const {
 	return _name;
 }
 
-bool Form::isSigned() const {
+bool AForm::isSigned() const {
 	return _signed;
 }
 
-int Form::getSignGrade() const {
+int AForm::getSignGrade() const {
 	return _signGrade;
 }
 
-int Form::getExecGrade() const {
+int AForm::getExecGrade() const {
 	return _execGrade;
 }
 
-void Form::beSigned(Bureaucrat &bureaucrat) {
+void AForm::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > _signGrade)
-		throw Form::GradeTooLowException(*this, _signGrade);
+		throw AForm::GradeTooLowException(*this, _signGrade);
 	_signed = true;
 }
 
-Form::GradeTooHighException::GradeTooHighException(Form &form, uint8_t level) : form(form), level(level) {
+void AForm::execute(Bureaucrat &bureaucrat) {
+	if (!isSigned())
+		throw AForm::UnsignedException(*this, bureaucrat);
+	if (bureaucrat.getGrade() > _execGrade)
+		throw AForm::GradeTooLowException(*this, _execGrade);
+	finalExecute();
+}
+
+AForm::GradeTooHighException::GradeTooHighException(AForm &form, uint8_t level) :
+		form(form), level(level) {
 
 }
 
-const char *Form::GradeTooHighException::what() const throw() {
+const char *AForm::GradeTooHighException::what() const throw() {
 	return "Grade too high";
 }
 
 
-Form::GradeTooLowException::GradeTooLowException(Form &form, uint8_t level) : form(form), level(level){
+AForm::GradeTooLowException::GradeTooLowException(AForm &form, uint8_t level) :
+		form(form), level(level) {
 
 }
 
-const char *Form::GradeTooLowException::what() const throw() {
+const char *AForm::GradeTooLowException::what() const throw() {
 	return "Grade too low";
 }
 
-std::ostream &operator<<(std::ostream &o, const Form &dt) {
+std::ostream &operator<<(std::ostream &o, const AForm &dt) {
 	o <<
-		"Form data\n" <<
+		"AForm data\n" <<
 		"\tname: [" << dt.getName() << "]\n" <<
 		"\tsigned: [" << dt.isSigned() << "]\n" <<
 		"\trequired sign grade: [" << static_cast<int16_t>(dt.getSignGrade()) << "]\n" <<
 		"\trequired execute grade: [" << static_cast<int16_t>(dt.getExecGrade()) << "]\n";
 	return o;
+}
+
+const char *AForm::UnsignedException::what() const throw() {
+	return "This form has not been signed yet, so it can not be executed.";
+}
+
+AForm::UnsignedException::UnsignedException(AForm &form, Bureaucrat &bureaucrat) :
+		form(form), bureaucrat(bureaucrat) {
+
 }

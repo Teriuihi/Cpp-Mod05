@@ -4,7 +4,7 @@
 #include <ostream>
 #include <iostream>
 #include "AForm.hpp"
-class Form;
+class AForm;
 
 class Bureaucrat {
 private:
@@ -40,7 +40,8 @@ public:
 	void increment();
 
 	void decrement();
-	void signForm(Form &form);
+	void signForm(AForm &form);
+	void executeForm(AForm &form);
 };
 
 std::ostream& operator<<(std::ostream& o, Bureaucrat const& dt);

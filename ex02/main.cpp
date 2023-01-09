@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
 void printGrade(Bureaucrat &bureaucrat) {
@@ -12,24 +13,27 @@ void printGrade(Bureaucrat &bureaucrat) {
 int main() {
 	try {
 		Bureaucrat b1 = Bureaucrat("b30", 30);
-		Form f1 = Form("f30", 30, 30);
+		ShrubberyCreationForm f1 = ShrubberyCreationForm("one");
 		b1.signForm(f1);
+		b1.executeForm(f1);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
 		Bureaucrat b1 = Bureaucrat("b30", 30);
-		Form f1 = Form("f20", 20, 20);
+		ShrubberyCreationForm f1 = ShrubberyCreationForm("two");
 		b1.signForm(f1);
+		b1.executeForm(f1);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
 		Bureaucrat b1 = Bureaucrat("b30", 30);
-		Form f1 = Form("f40", 40, 40);
+		ShrubberyCreationForm f1 = ShrubberyCreationForm("three");
 		b1.signForm(f1);
+		b1.executeForm(f1);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}

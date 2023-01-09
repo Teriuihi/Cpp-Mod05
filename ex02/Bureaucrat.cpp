@@ -66,15 +66,30 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade too low";
 }
 
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
 	try {
 		form.beSigned(*this);
-	} catch (Form::GradeTooLowException &e) {
+	} catch (AForm::GradeTooLowException &e) {
 		std::cout << name << " couldn't sign form [" << form.getName() <<
-		"] because " << name << "'s grade is too low." << std::endl;
+		"] because " << name << "'s sign grade is too low." << std::endl;
 		return;
 	}
 	std::cout << name << " signed form [" << form.getName() << "]" << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm &form) {
+	try {
+		form.execute(*this);
+	} catch (AForm::GradeTooLowException &e) {
+		std::cout << name << " couldn't execute form [" << form.getName() <<
+				  "] because " << name << "'s execute grade is too low." << std::endl;
+		return;
+	} catch (AForm::UnsignedException &e) {
+		std::cout << name << " couldn't execute form [" << form.getName() <<
+				  "] because the form is unsigned." << std::endl;
+		return;
+	}
+	std::cout << name << " executed form [" << form.getName() << "]" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &dt) {
