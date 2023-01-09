@@ -2,11 +2,12 @@
 #define BUREAUCRAT_H
 #include <string>
 #include <ostream>
+#include <iostream>
 
 class Bureaucrat {
 private:
 	const std::string name;
-	int grade;
+	uint8_t grade;
 public:
 	Bureaucrat();
 	Bureaucrat(const std::string& name, uint8_t grade);
