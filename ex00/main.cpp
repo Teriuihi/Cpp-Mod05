@@ -18,6 +18,7 @@ int main() {
 
 	try {
 		Bureaucrat a = Bureaucrat("test3", 150);
+		std::cout << "Created " << a << std::endl;
 		a.increment();
 		a.decrement();
 		printGrade(a);
