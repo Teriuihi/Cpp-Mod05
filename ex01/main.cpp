@@ -1,14 +1,6 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-void printGrade(Bureaucrat &bureaucrat) {
-	std::cout
-	<< bureaucrat.getName()
-	<< " grade: "
-	<< static_cast<int16_t>(bureaucrat.getGrade())
-	<< std::endl;
-}
-
 int main() {
 	try {
 		Bureaucrat b1 = Bureaucrat("b30", 30);
